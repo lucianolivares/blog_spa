@@ -25,11 +25,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <Grid item xs={12} className="center">
-        {this.state.entradas.map((post) => (
-          <Post author={post.author} title={post.title} body={post.body} />
-        ))}
-      </Grid>
+      <GridList container className="center" style={{width:500, height:500}}>
+        <Grid item xs={12}>
+          {this.state.entradas.map((post) => (
+            <Post author={post.author} title={post.title} body={post.body} />
+          ))}
+        </Grid>
+      </GridList>
     )
   }
 }
