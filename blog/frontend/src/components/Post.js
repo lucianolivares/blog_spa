@@ -1,46 +1,50 @@
 import React, { Component, Fragment} from "react";
-import { render } from "react-dom";
-import axios from 'axios'; 
-import { ListItemText, ListItem, Typography } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
+import { Card, CardContent, CardActions, Button, Typography } from "@material-ui/core";
 
 
-export default class Post extends Component {
-  static defaultProps = {
-    author: "",
-    title: "",
-    body: "",
-  };
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: "gray",
+    marginBottom: 40
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      author:  this.props.author,
-      title: this.props.title,
-      body: this.props.body,
-    };
-
-  }
 
 
-  render() {
-    return (
-      <ListItem alignItems="flex-start">
-        <ListItemText
-          primary={this.state.title}
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                color="textPrimary"
-              >
-                {this.state.author}
-              </Typography>
-              {this.state.body}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-    )
-  }
+export default function PostCard(props) {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardContent>
+        <Typography className={classes.title}color="textSecondary" gutterBottom>
+          Epigrafo
+        </Typography>
+        <Typography variant="h5" component="h2">
+          {props.title}
+        </Typography>
+        <Typography className={classes.pos} color="textSecondary">
+          {props.author}
+        </Typography>
+        <Typography variant="body2" component="p">
+          {props.body}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+  </Card>
+  )
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import axios from 'axios'; 
-import { GridList} from "@material-ui/core";
+import { GridList, Grid } from "@material-ui/core";
 import Post from './Post';
 
 export default class App extends Component {
@@ -25,11 +25,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <GridList>
+      <Grid item xs={12} className="center">
         {this.state.entradas.map((post) => (
           <Post author={post.author} title={post.title} body={post.body} />
         ))}
-      </GridList>
+      </Grid>
     )
   }
 }
