@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 import axios from 'axios'; 
 import { GridList, Grid } from "@material-ui/core";
-import Post from './Post';
+import PostCard from './PostCard';
 
 export default class App extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ export default class App extends Component {
       <GridList container className="center" style={{width:500, height:500}}>
         <Grid item xs={12}>
           {this.state.entradas.map((post) => (
-            <Post author={post.author} title={post.title} body={post.body} />
+            <PostCard author={post.author} title={post.title} body={post.body} />
           ))}
         </Grid>
       </GridList>

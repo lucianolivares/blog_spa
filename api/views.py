@@ -12,5 +12,3 @@ from .models import EntradaModel
 class EntradaView(ListAPIView):
     queryset = EntradaModel.objects.all()
     serializer_class = EntradaSerializer
-
-
