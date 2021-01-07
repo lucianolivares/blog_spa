@@ -7,7 +7,7 @@ $ npm install
 
 then start react app:
 
-$ npm start
+$ npm run dev
 
 And the main folder, where is manage.py, run this:
 
