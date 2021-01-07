@@ -1,40 +1,26 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { useState, useEffect } from "react";
 import axios from 'axios'; 
 import { GridList, Grid } from "@material-ui/core";
 import PostCard from './PostCard';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      entradas: []
-    };
-  }
+export default function App() {
+  const [entradas, setEntrada] = useState([]);
 
-  componentDidMount() {
+  useEffect(() => {
     axios.get('/api/entradas')
       .then((response) => response.data)
       .then((data) => {
-        this.setState({
-          entradas: data
-        });
+        setEntrada(data);
       });
-  }
+  }, []);
 
-
-  render() {
     return (
-      <GridList container className="center" style={{width:500, height:500}}>
+      <GridList container className="center">
         <Grid item xs={12}>
-          {this.state.entradas.map((post) => (
+          {entradas.map((post) => (
             <PostCard author={post.author} title={post.title} body={post.body} />
           ))}
         </Grid>
       </GridList>
-    )
+    );
   }
-}
-
-const appDiv = document.getElementById("app");
-render(<App />, appDiv);
