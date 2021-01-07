@@ -12,19 +12,16 @@ import {
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderOutLinedIcon from '@material-ui/icons/FavoriteBorderOutlined'
+import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
+
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: "gray",
     marginBottom: 40,
   },
   media: {
     height: 140,
     marginBottom:20
-  },
-
-  pos: {
-    marginBottom: 12,
   },
 });
 
@@ -33,6 +30,7 @@ export default function PostCard(props) {
   const classes = useStyles();
 
   const [favorite, setFavorite] = useState(false)
+  const [liked, setLiked] = useState(false)
 
   return (
     <Card className={classes.root}>
@@ -46,7 +44,7 @@ export default function PostCard(props) {
           <Typography className={classes.title} variant="h4" component="h4">
             {props.title}
           </Typography>
-          <Typography className={classes.pos} color="textSecondary">
+          <Typography color="textSecondary">
             {props.author}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -61,14 +59,22 @@ export default function PostCard(props) {
         >
           { favorite ? (
             <FavoriteIcon />    
-          ): (
+          ) : (
             <FavoriteBorderOutLinedIcon />
           )}
-          
         </IconButton>
-        <IconButton>
-          <ThumbUpAltIcon />
+
+        <IconButton onClick={() => {
+          liked ? setLiked(false) : setLiked(true)
+        }}
+        >
+          { liked ? (
+            <ThumbUpAltIcon />
+          ) : (
+            <ThumbUpAltOutlinedIcon />
+          )}
         </IconButton>
+
       </CardActions>
     </Card>
   );
