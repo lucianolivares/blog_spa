@@ -38,14 +38,14 @@ export default function PostCard(props) {
         <CardContent>
           <CardMedia
             className={classes.media}
-            image="https://dummyimage.com/600x400/000/fff"
-            title="Contemplative Reptile"
+            image={props.image_url}
+            title="DUMMY IMAGE"
           />
           <Typography className={classes.title} variant="h4" component="h4">
             {props.title}
           </Typography>
           <Typography color="textSecondary">
-            {props.author}
+            {props.author_id}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {props.body}

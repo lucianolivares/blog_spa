@@ -31,7 +31,7 @@ const App = () => {
 
         <Grid item xs={12} sm={10}>
           {entradas.map((post) => (
-            <PostCard author={post.author} title={post.title} body={post.body} />
+            <PostCard image_url={post.image_url} author_id={post.author_id} title={post.title} body={post.body} />
           ))}
         </Grid>
 
