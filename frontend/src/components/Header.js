@@ -1,36 +1,29 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  AppBar, 
-  Toolbar,
-  Typography, 
-  IconButton
+  Grid,
+  CardMedia,
 } from '@material-ui/core/';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const useStyles = makeStyles({
-  typographyStyles: {
-    flex: 1
+  media: {
+    height: "100%",
+    marginBottom: 10
   },
-  iconStyles: {
-    color: "#fff"
-  }
 });
 
-const Header = () => {
+export default function Header() {
   const classes = useStyles();
 
   return (
-  <AppBar position="sticky" color="primary">
-    <Toolbar>
-      <Typography className={classes.typographyStyles} variant="h6">
-        This is an AppBar
-      </Typography>
-      <IconButton className={classes.iconStyles} >
-        <AddCircleIcon />
-      </IconButton>
-    </Toolbar>
-  </AppBar>
-)};
-
-export default Header;
+    <Grid container>
+      <CardMedia
+        component="img" 
+        className={classes.media}
+        image="https://colegioparroquialandacollo.cl/wp-content/uploads/2020/09/cropped-Logo-CPA-Right-nuevo.png"
+      />
+      
+    </Grid>
+  );
+}

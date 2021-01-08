@@ -1,48 +1,41 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios'; 
-import { GridList, Grid } from "@material-ui/core";
+
+import { Grid, Divider } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
-import PostCard from './PostCard';
-import Header from './Header'
+import Header from './Header';
+import Footer from './Footer';
+import Home from './Home';
 
 
-const useStyles = makeStyles({});
+const useStyles = makeStyles({
+  sep: {
+    marginBottom: 10,
+  }
+});
 
 
-const App = () => {
-  const [entradas, setEntrada] = useState([]);
+export default function App() {
 
   const classes = useStyles();
 
-  useEffect(() => {
-    axios.get('/api/entradas')
-      .then((response) => response.data)
-      .then((data) => {
-        setEntrada(data);
-      });
-  }, []);
-
   return (
-    <Grid container direction="column" className="root">
+    <Grid container direction="column">
       <Header />
+      <Divider className={classes.sep} variant="middle" />
 
       <Grid item container>
         <Grid item xs={0} sm={1} />
 
         <Grid item xs={12} sm={10}>
-          {entradas.map((post) => (
-            <PostCard author={post.author} title={post.title} body={post.body} />
-          ))}
+          <Home />
         </Grid>
 
         <Grid item xs={0} sm={1} />
 
       </Grid>
       
-      <Grid item>Footer</Grid>
+      <Footer />
 
     </Grid>
   );
 }
-
-export default App;
