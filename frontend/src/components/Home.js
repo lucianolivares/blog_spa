@@ -37,10 +37,8 @@ export default function Home() {
           }}
         />
         <Route
-          path="/entrada/:entradaCode"
-          render={() => {
-            return <Entrada />
-          }}
+          path="/entrada/:title/"
+          component={Entrada}
         />
       </Switch>
     </Router>

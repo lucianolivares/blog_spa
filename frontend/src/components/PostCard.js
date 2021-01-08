@@ -45,7 +45,6 @@ export default function PostCard(props) {
           <CardMedia
             className={classes.media}
             image="https://dummyimage.com/600x400/000/fff"
-            title="Contemplative Reptile"
           />
           <Typography className={classes.title} variant="h4" component="h4">
             {props.title}
