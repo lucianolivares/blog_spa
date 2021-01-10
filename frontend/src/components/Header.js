@@ -4,7 +4,6 @@ import {
   Grid,
   CardMedia,
 } from '@material-ui/core/';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const useStyles = makeStyles({
   media: {

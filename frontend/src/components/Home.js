@@ -4,6 +4,7 @@ import { Grid } from '@material-ui/core'
 import PostCard from './PostCard';
 import axios from 'axios'; 
 import Entrada from './Entrada'
+import Footer from './Footer';
 
 export default function Home() {
 
@@ -18,7 +19,7 @@ export default function Home() {
   }, []);
 
 
-  function renderEntradas() {
+  function renderNews() {
     return (
       entradas.map((post) => (
         <PostCard author={post.author} title={post.title} body={post.body} />
@@ -26,21 +27,46 @@ export default function Home() {
     )
   };
 
+
   return (
     <Router>
-      <Switch>
-        <Route 
-          exact
-          path="/"
-          render={() => {
-            return renderEntradas()
-          }}
-        />
-        <Route
-          path="/entrada/:title/"
-          component={Entrada}
-        />
-      </Switch>
+
+      <Grid item container>
+        <Grid item xs={0} sm={1} />
+
+        <Grid item xs={12} sm={10}>
+          <Switch>
+            <Route 
+              exact
+              path="/"
+            />
+            <Route
+              path="/news"
+              render={() => {
+                return renderNews()
+              }}
+            />
+            <Route
+              path="/about"
+            />
+            <Route
+              path="/gallery"
+            />
+            <Route
+              path="/calendar"
+            />
+            <Route
+              path="/detail/:title"
+              component={Entrada}
+            />
+         </Switch>
+        </Grid>
+
+        <Grid item xs={0} sm={1} />
+
+      </Grid>
+
+      <Footer />
     </Router>
   )
 }

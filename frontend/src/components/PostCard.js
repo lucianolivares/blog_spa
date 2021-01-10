@@ -13,8 +13,7 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderOutLinedIcon from '@material-ui/icons/FavoriteBorderOutlined'
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
-import { Redirect, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import Link from 'react-router-dom';
 
 
 const useStyles = makeStyles({
@@ -34,13 +33,11 @@ export default function PostCard(props) {
   const [favorite, setFavorite] = useState(false)
   const [liked, setLiked] = useState(false)
 
-  const history = useHistory()
+  const link = "../detail/" + props.title
 
   return (
     <Card className={classes.root}>
-      <CardActionArea onClick={() => {
-        history.push(`/entrada/${props.title}`)
-      }}>
+      <CardActionArea component={Link} to={link}>
         <CardContent>
           <CardMedia
             className={classes.media}

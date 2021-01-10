@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; 
 import { CardMedia, Grid, Typography } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
 
 export default function Entrada(props) {
   const [ entrada, setEntrada ] = useState({})
+  let { title } = useParams()
 
   useEffect(() => {
-    axios.get('/api/entrada/' + props.match.params.title)
+    axios.get('/api/entrada/' + title)
       .then((response) => response.data )
       .then((data) => {
         setEntrada(data)
