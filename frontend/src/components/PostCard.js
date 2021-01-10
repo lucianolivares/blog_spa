@@ -13,7 +13,7 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderOutLinedIcon from '@material-ui/icons/FavoriteBorderOutlined'
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles({

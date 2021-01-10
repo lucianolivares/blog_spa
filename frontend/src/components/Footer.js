@@ -7,7 +7,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import SchoolIcon from '@material-ui/icons/School';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
 import DateRangeIcon from '@material-ui/icons/DateRange';
-import useHistory from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
