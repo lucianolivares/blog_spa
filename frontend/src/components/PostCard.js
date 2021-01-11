@@ -17,8 +17,10 @@ import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles({
-  root: {
-    marginBottom: 40,
+  root: props => {
+    return {
+      marginBottom: props.news ? 40 : 10,
+    };
   },
   media: {
     height: 140,
@@ -28,7 +30,7 @@ const useStyles = makeStyles({
 
 
 export default function PostCard(props) {
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   const [favorite, setFavorite] = useState(false)
   const [liked, setLiked] = useState(false)
