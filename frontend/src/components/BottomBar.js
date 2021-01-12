@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
-import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
 import SchoolIcon from '@material-ui/icons/School';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import { useHistory } from 'react-router-dom';
-import { yellow } from '@material-ui/core/colors'
 
 const styles = {
   root: {
@@ -28,10 +26,6 @@ function BottomBar(props) {
   const history = useHistory();
   const pathname = window.location.pathname;
   const [value, setValue] = useState(pathname);
-
-  useEffect(() => {
-    setValue(value)
-  })
 
   const handleChange = (event, newValue) => {
     setValue(newValue)

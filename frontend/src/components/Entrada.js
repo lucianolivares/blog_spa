@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'; 
 import { CardMedia, Grid, Typography } from '@material-ui/core';
-import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,18 +13,21 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function Entrada() {
+export default function Entrada(props) {
   const classes = useStyles()
   const [ entrada, setEntrada ] = useState({})
-  let { title } = useParams()
+  const title = props.match.params.title;
+  const link = "http://192.168.20.34:8000/api/entrada/" + title
 
   useEffect(() => {
-    axios.get('/api/entrada/' + title)
-      .then((response) => response.data )
-      .then((data) => {
-        setEntrada(data)
-      })
-  }, []);
+    async function fetichData() {
+      const response = await axios(link)
+      setEntrada(response.data);
+    }
+    console.log("fetching")
+    fetichData();
+  }, [link]);
+
 
   return (
     <Grid container >
