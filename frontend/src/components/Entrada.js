@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import axios from 'axios'; 
-import { CardMedia, Grid, Typography } from '@material-ui/core';
+import { Button, CardMedia, Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
     marginBottom: 20,
     [theme.breakpoints.up("sm")]: {
-      color: "blue"
+      color: "black"
     }
+  },
+  button : {
+    position: 'absolute',
+    color: 'white',
+    top: 10,
+    left: '10%',
+    transform: 'translateX(-30%)'
   }
 }));
 
@@ -36,6 +44,12 @@ export default function Entrada(props) {
         component="img"
         image="https://dummyimage.com/600x400/000/fff"
       />
+      <Button 
+        component={Link}
+        to= "/news"
+        variant="contained"
+        color="secondary"
+        className={classes.button}>Regresar</Button>
       <Grid item xs={12} className={classes.root}>
         <Typography variant="h3" className={classes.root}>
           {entrada.title}

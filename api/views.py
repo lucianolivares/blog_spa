@@ -13,6 +13,10 @@ class EntradaView(generics.ListAPIView):
     queryset = EntradaModel.objects.all()
     serializer_class = EntradaSerializer
 
+class LastNewsView(generics.ListAPIView):
+    queryset = EntradaModel.objects.all()[:4]
+    serializer_class = EntradaSerializer
+    
 class EntradaDetailView(generics.RetrieveAPIView):
     queryset = EntradaModel.objects.all()
     serializer_class = EntradaSerializer
