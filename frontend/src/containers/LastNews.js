@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Carousel from 'react-material-ui-carousel'
-import axios from 'axios'
 import { 
   Card,
   CardMedia,
@@ -29,26 +28,20 @@ const useStyles = makeStyles({
 export default function LastNews() {
   const classes = useStyles();
   const [lastNews, setLastNews] = useState([]);
-  const link = "http://192.168.20.34:8000/api/last_news"
 
   useEffect(() => {
-    async function fetichData() {
-      const response = await axios.get(
-        link
-        )
-      setLastNews(response.data);
-    }
-    fetichData();
-    console.log("fetching")
-    return () => {
-      setLastNews([])
-    };
-  }, []);
+    const apiUrl = `http://192.168.20.30:8000/api/`;
+    fetch(apiUrl)
+      .then((data) => data.json())
+      .then((posts) => {
+        setLastNews(posts);
+      });
+	}, [setLastNews]);
 
-  function renderCard(entrada) {
+  function renderCard(post) {
     return (
-      <Card>
-        <CardActionArea component={Link} >
+      <Card key={post.id}>
+        <CardActionArea component={Link} to={`/detail/${post.slug}`}>
           <CardContent>
               <CardMedia 
                 className={classes.media}
@@ -57,7 +50,7 @@ export default function LastNews() {
               <Typography 
                 className={classes.typografyClass}
                 variant="h4">
-                {entrada.title}
+                {post.title}
               </Typography>
           </CardContent>
         </CardActionArea>
@@ -70,7 +63,7 @@ export default function LastNews() {
       <Header/>
       <Carousel>
         {
-          lastNews.map( (entrada) => renderCard(entrada))
+          lastNews.map( (post) => renderCard(post))
         }
       </Carousel>
     </div>

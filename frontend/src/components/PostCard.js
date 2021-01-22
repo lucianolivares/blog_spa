@@ -31,11 +31,12 @@ const useStyles = makeStyles({
 
 export default function PostCard(props) {
   const classes = useStyles(props);
+  const { post } = props
 
   const [favorite, setFavorite] = useState(false)
   const [liked, setLiked] = useState(false)
 
-  const link = "../detail/" + props.title
+  const link = "../detail/" + post.slug
 
   return (
     <Card className={classes.root}>
@@ -46,13 +47,13 @@ export default function PostCard(props) {
             image="https://dummyimage.com/600x400/000/fff"
           />
           <Typography className={classes.title} variant="h4" component="h4">
-            {props.title}
+            {post.title}
           </Typography>
           <Typography color="textSecondary">
-            {props.author}
+            {post.author}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.body}
+            {post.content.substr(0, 100)}...
           </Typography>
         </CardContent>
       </CardActionArea>

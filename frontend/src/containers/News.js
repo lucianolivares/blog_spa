@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import PostCard from '../components/PostCard';
-import axios from 'axios'; 
 import Header from '../components/Header'
 
 
 export default function News() {
-  const [news, setNews] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    async function fetichData() {
-      const response = await axios(
-        "http://192.168.20.34:8000/api/entradas"
-        )
-      setNews(response.data);
-    }
-
-    fetichData();
-  }, []);
+	useEffect(() => {
+		const apiUrl = `http://192.168.20.30:8000/api/`;
+		fetch(apiUrl)
+			.then((data) => data.json())
+			.then((posts) => {
+				setPosts(posts);
+			});
+	}, [setPosts]);
 
 
   return (
     <div>
       <Header/>
-      {news.map((data) => (
-        <PostCard key={data.title} author={data.author} title={data.title} body={data.body} news={true}/>
+      {posts.map((post) => (
+        <PostCard key={post.id} post={post}/>
       )
     )}
     </div>

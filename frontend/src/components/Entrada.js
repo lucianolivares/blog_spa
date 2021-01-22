@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
-import axios from 'axios'; 
+import { Link, useParams } from 'react-router-dom';
 import { Button, CardMedia, Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -21,20 +20,19 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function Entrada(props) {
+export default function Entrada() {
   const classes = useStyles()
-  const [ entrada, setEntrada ] = useState({})
-  const title = props.match.params.title;
-  const link = "http://192.168.20.34:8000/api/entrada/" + title
+  const [ post, setPost ] = useState({})
+  const { slug } = useParams();
 
   useEffect(() => {
-    async function fetichData() {
-      const response = await axios(link)
-      setEntrada(response.data);
-    }
-    console.log("fetching")
-    fetichData();
-  }, [link]);
+		const apiUrl = "http://192.168.20.30:8000/api/" + slug;
+		fetch(apiUrl)
+			.then((data) => data.json())
+			.then((post) => {
+				setPost(post);
+			});
+	}, [setPost, slug]);
 
 
   return (
@@ -46,24 +44,25 @@ export default function Entrada(props) {
       />
       <Button 
         component={Link}
-        to= "/news"
+        to= {"/news"}
         variant="contained"
         color="secondary"
         className={classes.button}>Regresar</Button>
+
       <Grid item xs={12} className={classes.root}>
         <Typography variant="h3" className={classes.root}>
-          {entrada.title}
+          {post.title}
         </Typography>
       </Grid>
       <Grid item xs={6} className={classes.root}>
-        <Typography>Autor: {entrada.author}</Typography>
+        <Typography>Autor: {post.author}</Typography>
       </Grid>
       <Grid item xs={6} className={classes.root}>
         <Typography>Fecha: SIN FECHA</Typography>
       </Grid>
 
       <Grid item xs={12}>
-        <Typography>{entrada.body}</Typography>
+        <Typography>{post.content}</Typography>
       </Grid>
     </Grid>
 

@@ -17,7 +17,7 @@ const BaseRouter = () => (
     <Route path="/about" component={About}/>
     <Route path="/gallery" component={Gallery}/>
     <Route path="/calendar" component={Calendar} />
-    <Route path="/detail/:title"component={Entrada}/>
+    <Route path="/detail/:slug" component={Entrada}/>
   </div>
 );
 
