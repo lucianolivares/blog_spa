@@ -5,9 +5,9 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 import HomeIcon from '@material-ui/icons/Home';
 import SchoolIcon from '@material-ui/icons/School';
-import PermMediaIcon from '@material-ui/icons/PermMedia';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import { useHistory, useLocation } from 'react-router-dom';
+import { AccountBox } from '@material-ui/icons';
 
 const styles = {
   root: {
@@ -62,16 +62,16 @@ function BottomBar(props) {
       <BottomNavigationAction 
         showLabel
         className={classes.actionButton}
-        label="Galería"
-        value="/gallery" 
-        icon={<PermMediaIcon />} 
+        label="Calendario"
+        value="/calendar" 
+        icon={<DateRangeIcon />} 
       />
       <BottomNavigationAction 
         showLabel
         className={classes.actionButton}
-        label="Calendario" 
-        value="/calendar" 
-        icon={<DateRangeIcon />} 
+        label="Perfil" 
+        value="/account" 
+        icon={<AccountBox />} 
       />
     </BottomNavigation>
   );

@@ -26,7 +26,7 @@ export default function Entrada() {
   const { slug } = useParams();
 
   useEffect(() => {
-		const apiUrl = "http://192.168.20.30:8000/api/" + slug;
+		const apiUrl = "http://127.0.0.1:8000/api/" + slug;
 		fetch(apiUrl)
 			.then((data) => data.json())
 			.then((post) => {

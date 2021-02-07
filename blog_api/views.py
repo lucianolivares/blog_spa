@@ -24,7 +24,7 @@ class PostList(generics.ListCreateAPIView):
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-    lookup_field = "slug"
+    #lookup_field = "slug"
     permission_classes = [PostUserWithPermission]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
