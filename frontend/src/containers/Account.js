@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axiosInstance from '../axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory, NavLink } from 'react-router-dom';
 // Material UI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -14,6 +14,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { purple } from '@material-ui/core/colors';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,6 +35,13 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  danger: {
+    color: theme.palette.getContrastText(purple[500]),
+    backgroundColor: purple[500],
+    '&:hover': {
+      backgroundColor: purple[700],
+    },
+  }
 }));
 
 export default function SignUp() {
@@ -160,6 +168,15 @@ export default function SignUp() {
               </Link>
             </Grid>
           </Grid>
+          <Button
+            fullWidth
+            variant="contained"
+            className={classes.danger}
+            component={NavLink}
+            to="/logout"
+          >
+            Cerrar Session
+          </Button>
         </form>
       </div>
     </Container>

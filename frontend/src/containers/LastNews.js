@@ -10,6 +10,7 @@ import {
   CardContent
 } from '@material-ui/core';
 import Header from '../components/Header';
+import axiosInstance from '../axios';
 
 const useStyles = makeStyles({
   media: {
@@ -30,12 +31,10 @@ export default function LastNews() {
   const [lastNews, setLastNews] = useState([]);
 
   useEffect(() => {
-    const apiUrl = `http://127.0.0.1:8000/api/`;
-    fetch(apiUrl)
-      .then((data) => data.json())
-      .then((posts) => {
-        setLastNews(posts);
-      });
+    axiosInstance.get().then((res) => {
+      setLastNews(res.data)
+      console.log(res.data)
+    })
 	}, [setLastNews]);
 
   function renderCard(post) {
@@ -45,7 +44,7 @@ export default function LastNews() {
           <CardContent>
               <CardMedia 
                 className={classes.media}
-                image="https://dummyimage.com/600x400/000/fff" 
+                image="https://source.unsplash.com/random" 
                 />
               <Typography 
                 className={classes.typografyClass}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link, useParams } from 'react-router-dom';
 import { Button, CardMedia, Grid, Typography } from '@material-ui/core';
+import axiosInstance from '../axios'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,13 +27,11 @@ export default function Entrada() {
   const { slug } = useParams();
 
   useEffect(() => {
-		const apiUrl = "http://127.0.0.1:8000/api/" + slug;
-		fetch(apiUrl)
-			.then((data) => data.json())
-			.then((post) => {
-				setPost(post);
-			});
-	}, [setPost, slug]);
+		axiosInstance.get(slug).then((res) => {
+      setPost(res.data)
+      console.log(res.data)
+    })
+	}, [setPost]);
 
 
   return (
@@ -40,7 +39,7 @@ export default function Entrada() {
       <CardMedia
         className={classes.root}
         component="img"
-        image="https://dummyimage.com/600x400/000/fff"
+        image="https://source.unsplash.com/random"
       />
       <Button 
         component={Link}

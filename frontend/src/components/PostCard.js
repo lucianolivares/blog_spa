@@ -36,15 +36,13 @@ export default function PostCard(props) {
   const [favorite, setFavorite] = useState(false)
   const [liked, setLiked] = useState(false)
 
-  const link = "../detail/" + post.slug
-
   return (
     <Card className={classes.root}>
-      <CardActionArea component={Link} to={link}>
+      <CardActionArea component={Link} to={"detail/" + post.slug}>
         <CardContent>
           <CardMedia
             className={classes.media}
-            image="https://dummyimage.com/600x400/000/fff"
+            image="https://source.unsplash.com/random"
           />
           <Typography className={classes.title} variant="h4" component="h4">
             {post.title}

@@ -10,6 +10,7 @@ import Account from './containers/Account'
 import Calendar from './containers/Calendar';
 import News from './containers/News';
 import Login from './containers/Login'
+import LogOut from "./containers/logout";
 
 const BaseRouter = () => (
   <div>
@@ -20,6 +21,7 @@ const BaseRouter = () => (
     <Route path="/login" component={Login}/>
     <Route path="/calendar" component={Calendar} />
     <Route path="/detail/:slug" component={Entrada}/>
+    <Route path="/logout" component={LogOut}/>
   </div>
 );
 

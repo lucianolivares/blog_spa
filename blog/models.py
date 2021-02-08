@@ -19,7 +19,7 @@ class Post(models.Model):
     
     class PostByDate(models.Manager):
         def get_queryset(self):
-            startdate = timezone.now() - timedelta(days=1)
+            startdate = timezone.now() - timedelta(days=3)
             enddate = timezone.now()
             return super().get_queryset().filter(published__range=[startdate, enddate])
 
